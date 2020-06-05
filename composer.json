@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-        "codeigniter4/framework": "^4.0"
+        "codeigniter4/framework": "^4.0",
+        "phpdocumentor/reflection-docblock": "^5.1"
     },
     "autoload": {
         "psr-4": {
