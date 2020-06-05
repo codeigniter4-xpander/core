@@ -1,6 +1,6 @@
 {
     "name": "codeigniter4-xpander/core",
-    "description": "COdeigniter4 Xpander Core",
+    "description": "CodeIgniter 4 Xpander Core",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-        "codeigniter4/framework": "^4.0"
+        "codeigniter4/framework": "^4.0",
+        "phpdocumentor/reflection-docblock": "^5.1"
     },
     "autoload": {
         "psr-4": {
