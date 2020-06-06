@@ -1,8 +1,8 @@
 <?php
 
-namespace Xpander\Entities;
+namespace CI4Xpander\Entities;
 
-class Status extends \Xpander\Entity
+class Status extends \CI4Xpander\Entity
 {
     protected $casts = [
         'code' => 'string',

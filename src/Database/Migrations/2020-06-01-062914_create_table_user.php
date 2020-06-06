@@ -1,27 +1,27 @@
-<?php namespace Xpander\Database\Migrations;
+<?php namespace CI4Xpander\Database\Migrations;
 
-class CreateTableUser extends \Xpander\Migration
+class CreateTableUser extends \CI4Xpander\Migration
 {
 	public function up()
 	{
         $this->db->transStart();
 
         $this->forge->addField(array_merge(
-            \Xpander\Helpers\Database\Table\Field::ID(),
-            \Xpander\Helpers\Database\Table\Field::foreignID('status'),
-            \Xpander\Helpers\Database\Table\Field::string('code', [
+            \CI4Xpander\Helpers\Database\Table\Field::ID(),
+            \CI4Xpander\Helpers\Database\Table\Field::foreignID('status'),
+            \CI4Xpander\Helpers\Database\Table\Field::string('code', [
                 'null' => false
             ]),
-            \Xpander\Helpers\Database\Table\Field::string('email', [
+            \CI4Xpander\Helpers\Database\Table\Field::string('email', [
                 'null' => false
             ]),
-            \Xpander\Helpers\Database\Table\Field::string('name', [
+            \CI4Xpander\Helpers\Database\Table\Field::string('name', [
                 'null' => false
             ]),
-            \Xpander\Helpers\Database\Table\Field::string('password', [
+            \CI4Xpander\Helpers\Database\Table\Field::string('password', [
                 'null' => false
             ]),
-            \Xpander\Helpers\Database\Table\Field::trackable()
+            \CI4Xpander\Helpers\Database\Table\Field::trackable()
         ))->addUniqueKey('code')->addUniqueKey('email')->addPrimaryKey('id')->createTable('user');
 
         $this->db->transComplete();

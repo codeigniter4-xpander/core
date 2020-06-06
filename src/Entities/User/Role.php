@@ -1,8 +1,8 @@
 <?php
 
-namespace Xpander\Entities\User;
+namespace CI4Xpander\Entities\User;
 
-class Role extends \Xpander\Entity
+class Role extends \CI4Xpander\Entity
 {
     protected $casts = [
         'status_id' => 'integer',

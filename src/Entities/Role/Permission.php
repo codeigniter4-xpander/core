@@ -1,8 +1,8 @@
 <?php
 
-namespace Xpander\Entities\Role;
+namespace CI4Xpander\Entities\Role;
 
-class Permission extends \Xpander\Entity
+class Permission extends \CI4Xpander\Entity
 {
     protected $casts = [
         'role_id' => 'integer',

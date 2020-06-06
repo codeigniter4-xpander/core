@@ -1,17 +1,17 @@
-<?php namespace Xpander\Database\Migrations;
+<?php namespace CI4Xpander\Database\Migrations;
 
-class CreateTableUserRole extends \Xpander\Migration
+class CreateTableUserRole extends \CI4Xpander\Migration
 {
 	public function up()
 	{
         $this->db->transStart();
 
         $this->forge->addField(array_merge(
-            \Xpander\Helpers\Database\Table\Field::ID(),
-            \Xpander\Helpers\Database\Table\Field::foreignID('status'),
-            \Xpander\Helpers\Database\Table\Field::foreignID('user'),
-            \Xpander\Helpers\Database\Table\Field::foreignID('role'),
-            \Xpander\Helpers\Database\Table\Field::trackable()
+            \CI4Xpander\Helpers\Database\Table\Field::ID(),
+            \CI4Xpander\Helpers\Database\Table\Field::foreignID('status'),
+            \CI4Xpander\Helpers\Database\Table\Field::foreignID('user'),
+            \CI4Xpander\Helpers\Database\Table\Field::foreignID('role'),
+            \CI4Xpander\Helpers\Database\Table\Field::trackable()
         ))->addUniqueKey([
             'user_id', 'role_id'
         ])->addPrimaryKey('id')->createTable('user_role');

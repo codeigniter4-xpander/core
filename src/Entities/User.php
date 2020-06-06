@@ -1,8 +1,8 @@
 <?php
 
-namespace Xpander\Entities;
+namespace CI4Xpander\Entities;
 
-class User extends \Xpander\Entity
+class User extends \CI4Xpander\Entity
 {
     protected $casts = [
         'status_id' => 'integer',
@@ -14,13 +14,13 @@ class User extends \Xpander\Entity
 
     const SCHEMA = [
         'user_role' => [
-            \Xpander\Entities\User\Role::class,
+            \CI4Xpander\Entities\User\Role::class,
             '$target' => 'user_id',
             'role' => [
                 Role::class,
                 '$source' => 'role_id',
                 'role_permission' => [
-                    \Xpander\Entities\Role\Permission::class,
+                    \CI4Xpander\Entities\Role\Permission::class,
                     '$target' => 'role_id',
                     'permission' => [
                         Permission::class,
@@ -46,7 +46,7 @@ class User extends \Xpander\Entity
             ],
         ],
         'user_permission' => [
-            \Xpander\Entities\User\Permission::class,
+            \CI4Xpander\Entities\User\Permission::class,
             '$target' => 'user_id',
             'permission' => [
                 Permission::class,

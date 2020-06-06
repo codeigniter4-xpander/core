@@ -1,12 +1,12 @@
 <?php
 
-namespace Xpander\Models;
+namespace CI4Xpander\Models;
 
-class Status extends \Xpander\Model
+class Status extends \CI4Xpander\Model
 {
     protected $table = 'status';
     protected $allowedFields = [
         'code', 'name', 'description'
     ];
-    protected $returnType = \Xpander\Entities\Status::class;
+    protected $returnType = \CI4Xpander\Entities\Status::class;
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Xpander\Filters\Auth;
+namespace CI4Xpander\Filters\Auth;
 
-class ApiAuth extends \Xpander\Filters\Auth
+class ApiAuth extends \CI4Xpander\Filters\Auth
 {
 
 }

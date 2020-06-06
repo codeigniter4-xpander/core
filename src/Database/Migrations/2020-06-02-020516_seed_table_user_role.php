@@ -1,6 +1,6 @@
-<?php namespace Xpander\Database\Migrations;
+<?php namespace CI4Xpander\Database\Migrations;
 
-class SeedTableUserRole extends \Xpander\Migration
+class SeedTableUserRole extends \CI4Xpander\Migration
 {
 	public function up()
 	{

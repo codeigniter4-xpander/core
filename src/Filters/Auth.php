@@ -1,6 +1,6 @@
 <?php
 
-namespace Xpander\Filters;
+namespace CI4Xpander\Filters;
 
 class Auth implements \CodeIgniter\Filters\FilterInterface
 {

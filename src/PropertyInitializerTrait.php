@@ -1,10 +1,10 @@
 <?php
 
-namespace Xpander;
+namespace CI4Xpander;
 
 trait PropertyInitializerTrait
 {
-    use \Xpander\ReflectionClassTrait, \Xpander\DocBlockTrait;
+    use \CI4Xpander\ReflectionClassTrait, \CI4Xpander\DocBlockTrait;
 
     protected function _initProperty()
     {

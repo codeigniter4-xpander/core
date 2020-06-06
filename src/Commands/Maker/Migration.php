@@ -1,6 +1,6 @@
 <?php
 
-namespace Xpander\Commands\Maker;
+namespace CI4Xpander\Commands\Maker;
 
 class Migration extends \CodeIgniter\CLI\BaseCommand
 {
@@ -58,7 +58,7 @@ class Migration extends \CodeIgniter\CLI\BaseCommand
         $template = <<<EOD
 <?php namespace $ns\Database\Migrations;
 
-class {name} extends \Xpander\Migration
+class {name} extends \CI4Xpander\Migration
 {
 	public function up()
 	{

@@ -1,6 +1,6 @@
 <?php
 
-namespace Xpander\View;
+namespace CI4Xpander\View;
 
 trait DataFactoryTrait
 {

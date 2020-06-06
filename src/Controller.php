@@ -1,13 +1,13 @@
 <?php
 
-namespace Xpander;
+namespace CI4Xpander;
 
 class Controller extends \CodeIgniter\Controller
 {
     /**
      * @var Xpander\View
      */
-    protected \Xpander\View $view;
+    protected \CI4Xpander\View $view;
 
     use ClassInitializerTrait, PropertyInitializerTrait;
 

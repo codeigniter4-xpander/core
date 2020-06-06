@@ -1,28 +1,28 @@
-<?php namespace Xpander\Database\Migrations;
+<?php namespace CI4Xpander\Database\Migrations;
 
-class CreateTableMenu extends \Xpander\Migration
+class CreateTableMenu extends \CI4Xpander\Migration
 {
 	public function up()
 	{
         $this->db->transStart();
 
         $this->forge->addField(array_merge(
-            \Xpander\Helpers\Database\Table\Field::ID(),
-            \Xpander\Helpers\Database\Table\Field::parentID(),
-            \Xpander\Helpers\Database\Table\Field::foreignID('status'),
-            \Xpander\Helpers\Database\Table\Field::foreignID('type'),
-            \Xpander\Helpers\Database\Table\Field::string('code', [
+            \CI4Xpander\Helpers\Database\Table\Field::ID(),
+            \CI4Xpander\Helpers\Database\Table\Field::parentID(),
+            \CI4Xpander\Helpers\Database\Table\Field::foreignID('status'),
+            \CI4Xpander\Helpers\Database\Table\Field::foreignID('type'),
+            \CI4Xpander\Helpers\Database\Table\Field::string('code', [
                 'null' => false
             ]),
-            \Xpander\Helpers\Database\Table\Field::string('name', [
+            \CI4Xpander\Helpers\Database\Table\Field::string('name', [
                 'null' => false
             ]),
-            \Xpander\Helpers\Database\Table\Field::text('description'),
-            \Xpander\Helpers\Database\Table\Field::string('url'),
-            \Xpander\Helpers\Database\Table\Field::string('icon'),
-            \Xpander\Helpers\Database\Table\Field::orderingInteger('level'),
-            \Xpander\Helpers\Database\Table\Field::orderingInteger(),
-            \Xpander\Helpers\Database\Table\Field::trackable()
+            \CI4Xpander\Helpers\Database\Table\Field::text('description'),
+            \CI4Xpander\Helpers\Database\Table\Field::string('url'),
+            \CI4Xpander\Helpers\Database\Table\Field::string('icon'),
+            \CI4Xpander\Helpers\Database\Table\Field::orderingInteger('level'),
+            \CI4Xpander\Helpers\Database\Table\Field::orderingInteger(),
+            \CI4Xpander\Helpers\Database\Table\Field::trackable()
         ))->addUniqueKey('code')->addPrimaryKey('id')->createTable('menu');
 
         $this->db->transComplete();

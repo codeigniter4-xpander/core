@@ -1,6 +1,6 @@
 <?php
 
-namespace Xpander;
+namespace CI4Xpander;
 
 use phpDocumentor\Reflection\DocBlockFactory;
 

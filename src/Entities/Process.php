@@ -1,8 +1,8 @@
 <?php
 
-namespace Xpander\Entities;
+namespace CI4Xpander\Entities;
 
-class Process extends \Xpander\Entity
+class Process extends \CI4Xpander\Entity
 {
     protected $casts = [
         'status_id' => 'integer',

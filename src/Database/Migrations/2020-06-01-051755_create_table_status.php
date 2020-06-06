@@ -1,21 +1,21 @@
-<?php namespace Xpander\Database\Migrations;
+<?php namespace CI4Xpander\Database\Migrations;
 
-class CreateTableStatus extends \Xpander\Migration
+class CreateTableStatus extends \CI4Xpander\Migration
 {
 	public function up()
 	{
         $this->db->transStart();
 
         $this->forge->addField(array_merge(
-            \Xpander\Helpers\Database\Table\Field::ID(),
-            \Xpander\Helpers\Database\Table\Field::string('code', [
+            \CI4Xpander\Helpers\Database\Table\Field::ID(),
+            \CI4Xpander\Helpers\Database\Table\Field::string('code', [
                 'null' => false
             ]),
-            \Xpander\Helpers\Database\Table\Field::string('name', [
+            \CI4Xpander\Helpers\Database\Table\Field::string('name', [
                 'null' => false
             ]),
-            \Xpander\Helpers\Database\Table\Field::text('description'),
-            \Xpander\Helpers\Database\Table\Field::trackable()
+            \CI4Xpander\Helpers\Database\Table\Field::text('description'),
+            \CI4Xpander\Helpers\Database\Table\Field::trackable()
         ))->addPrimaryKey('id')->addUniqueKey('code')->createTable('status');
 
         $this->db->transComplete();

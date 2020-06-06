@@ -1,6 +1,6 @@
-<?php namespace Xpander\Database\Migrations;
+<?php namespace CI4Xpander\Database\Migrations;
 
-class SeedTableMenuPermission extends \Xpander\Migration
+class SeedTableMenuPermission extends \CI4Xpander\Migration
 {
 	public function up()
 	{

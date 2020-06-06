@@ -1,6 +1,6 @@
 <?php
 
-namespace Xpander\Helpers\Database\Table;
+namespace CI4Xpander\Helpers\Database\Table;
 
 class Field
 {

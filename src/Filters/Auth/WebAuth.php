@@ -1,8 +1,8 @@
 <?php
 
-namespace Xpander\Filters\Auth;
+namespace CI4Xpander\Filters\Auth;
 
-class WebAuth extends \Xpander\Filters\Auth
+class WebAuth extends \CI4Xpander\Filters\Auth
 {
     public function before(\CodeIgniter\HTTP\RequestInterface $request, $params = null)
     {

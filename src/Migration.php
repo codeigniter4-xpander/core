@@ -1,10 +1,10 @@
 <?php
 
-namespace Xpander;
+namespace CI4Xpander;
 
 class Migration extends \CodeIgniter\Database\Migration
 {
-    use \Xpander\ClassInitializerTrait;
+    use \CI4Xpander\ClassInitializerTrait;
 
     public function __construct(\CodeIgniter\Database\Forge $forge = null)
     {

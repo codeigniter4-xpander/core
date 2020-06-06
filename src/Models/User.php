@@ -1,12 +1,12 @@
 <?php
 
-namespace Xpander\Models;
+namespace CI4Xpander\Models;
 
-class User extends \Xpander\Model
+class User extends \CI4Xpander\Model
 {
     protected $table = 'user';
     protected $allowedFields = [
         'code', 'name', 'email', 'password', 'status_id'
     ];
-    protected $returnType = \Xpander\Entities\User::class;
+    protected $returnType = \CI4Xpander\Entities\User::class;
 }

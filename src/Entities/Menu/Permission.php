@@ -1,8 +1,8 @@
 <?php
 
-namespace Xpander\Entities\Menu;
+namespace CI4Xpander\Entities\Menu;
 
-class Permission extends \Xpander\Entity
+class Permission extends \CI4Xpander\Entity
 {
     protected $casts = [
         'status_id' => 'integer',

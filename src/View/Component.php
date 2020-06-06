@@ -1,6 +1,6 @@
 <?php
 
-namespace Xpander\View;
+namespace CI4Xpander\View;
 
 class Component
 {
@@ -15,11 +15,11 @@ class Component
     protected string $_view = 'Main';
 
     /**
-     * @var \Xpander\View\Data
+     * @var \CI4Xpander\View\Data
      */
-    public ?\Xpander\View\Data $data = null;
+    public ?\CI4Xpander\View\Data $data = null;
 
-    use \Xpander\ClassInitializerTrait, \Xpander\PropertyInitializerTrait, \Xpander\View\ComponentFactoryTrait;
+    use \CI4Xpander\ClassInitializerTrait, \CI4Xpander\PropertyInitializerTrait, \CI4Xpander\View\ComponentFactoryTrait;
 
     public function __construct(Data $data = null)
     {

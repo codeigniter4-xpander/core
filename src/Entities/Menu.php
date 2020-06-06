@@ -1,8 +1,8 @@
 <?php
 
-namespace Xpander\Entities;
+namespace CI4Xpander\Entities;
 
-class Menu extends \Xpander\Entity
+class Menu extends \CI4Xpander\Entity
 {
     protected $casts = [
         'parent_id' => 'integer',

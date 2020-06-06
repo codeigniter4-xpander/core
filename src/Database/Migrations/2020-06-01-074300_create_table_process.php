@@ -1,24 +1,24 @@
-<?php namespace Xpander\Database\Migrations;
+<?php namespace CI4Xpander\Database\Migrations;
 
-class CreateTableProcess extends \Xpander\Migration
+class CreateTableProcess extends \CI4Xpander\Migration
 {
 	public function up()
 	{
         $this->db->transStart();
 
         $this->forge->addField(array_merge(
-            \Xpander\Helpers\Database\Table\Field::ID(),
-            \Xpander\Helpers\Database\Table\Field::foreignID('status'),
-            \Xpander\Helpers\Database\Table\Field::foreignID('type'),
-            \Xpander\Helpers\Database\Table\Field::string('code', [
+            \CI4Xpander\Helpers\Database\Table\Field::ID(),
+            \CI4Xpander\Helpers\Database\Table\Field::foreignID('status'),
+            \CI4Xpander\Helpers\Database\Table\Field::foreignID('type'),
+            \CI4Xpander\Helpers\Database\Table\Field::string('code', [
                 'null' => false
             ]),
-            \Xpander\Helpers\Database\Table\Field::string('name', [
+            \CI4Xpander\Helpers\Database\Table\Field::string('name', [
                 'null' => false
             ]),
-            \Xpander\Helpers\Database\Table\Field::text('description'),
-            \Xpander\Helpers\Database\Table\Field::json('property'),
-            \Xpander\Helpers\Database\Table\Field::trackable()
+            \CI4Xpander\Helpers\Database\Table\Field::text('description'),
+            \CI4Xpander\Helpers\Database\Table\Field::json('property'),
+            \CI4Xpander\Helpers\Database\Table\Field::trackable()
         ))->addUniqueKey('code')->addPrimaryKey('id')->createTable('process');
 
         $this->db->transComplete();

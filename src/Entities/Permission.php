@@ -1,8 +1,8 @@
 <?php
 
-namespace Xpander\Entities;
+namespace CI4Xpander\Entities;
 
-class Permission extends \Xpander\Entity
+class Permission extends \CI4Xpander\Entity
 {
     protected $casts = [
         'code' => 'string',

@@ -1,10 +1,10 @@
 <?php
 
-namespace Xpander\View;
+namespace CI4Xpander\View;
 
 class Data
 {
-    use \Xpander\ClassInitializerTrait, \Xpander\PropertyInitializerTrait, \Xpander\View\DataFactoryTrait;
+    use \CI4Xpander\ClassInitializerTrait, \CI4Xpander\PropertyInitializerTrait, \CI4Xpander\View\DataFactoryTrait;
 
     public function __construct(array $data = [])
     {

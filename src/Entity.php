@@ -1,6 +1,6 @@
 <?php
 
-namespace Xpander;
+namespace CI4Xpander;
 
 class Entity extends \CodeIgniter\Entity
 {

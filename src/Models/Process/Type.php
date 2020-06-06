@@ -1,12 +1,12 @@
 <?php
 
-namespace Xpander\Models\Process;
+namespace CI4Xpander\Models\Process;
 
-class Type extends \Xpander\Model
+class Type extends \CI4Xpander\Model
 {
     protected $table = 'process_type';
     protected $allowedFields = [
         'status_id', 'code', 'name', 'description'
     ];
-    protected $returnType = \Xpander\Entities\Process\Type::class;
+    protected $returnType = \CI4Xpander\Entities\Process\Type::class;
 }

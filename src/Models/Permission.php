@@ -1,12 +1,12 @@
 <?php
 
-namespace Xpander\Models;
+namespace CI4Xpander\Models;
 
-class Permission extends \Xpander\Model
+class Permission extends \CI4Xpander\Model
 {
     protected $table = 'permission';
     protected $allowedFields = [
         'code', 'name', 'description', 'status_id'
     ];
-    protected $returnType = \Xpander\Entities\Permission::class;
+    protected $returnType = \CI4Xpander\Entities\Permission::class;
 }
