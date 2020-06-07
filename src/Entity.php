@@ -11,7 +11,7 @@ class Entity extends \CodeIgniter\Entity
         'created_at', 'updated_at', 'deleted_at'
     ];
 
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->casts['id'] = 'integer';
         $this->casts['created_by'] = 'integer';

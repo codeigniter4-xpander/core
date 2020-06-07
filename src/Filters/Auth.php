@@ -7,7 +7,7 @@ class Auth implements \CodeIgniter\Filters\FilterInterface
     /**
      * @var \CodeIgniter\Session\Session
      */
-    protected ?\CodeIgniter\Session\Session $session;
+    protected $session;
 
     public function __construct()
     {

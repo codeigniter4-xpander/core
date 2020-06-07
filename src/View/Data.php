@@ -6,7 +6,7 @@ class Data
 {
     use \CI4Xpander\ClassInitializerTrait, \CI4Xpander\PropertyInitializerTrait, \CI4Xpander\View\DataFactoryTrait;
 
-    public function __construct(array $data = [])
+    public function __construct($data = [])
     {
         $this->_initReflectionClass();
         $this->_initDocBlock();

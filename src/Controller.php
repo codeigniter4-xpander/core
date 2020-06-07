@@ -7,7 +7,7 @@ class Controller extends \CodeIgniter\Controller
     /**
      * @var Xpander\View
      */
-    protected \CI4Xpander\View $view;
+    protected $view;
 
     use ClassInitializerTrait, PropertyInitializerTrait;
 

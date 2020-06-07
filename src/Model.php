@@ -12,17 +12,17 @@ class Model extends \CodeIgniter\Model
     /**
      * @var bool
      */
-    protected bool $withSchema = false;
+    protected $withSchema = false;
 
     /**
      * @var ReflectionClass[]
      */
-    protected array $_savedEntityReflection = [];
+    protected $_savedEntityReflection = [];
 
     /**
      * @return self
      */
-    public function withSchema(): self
+    public function withSchema()
     {
         if (defined("{$this->returnType}::SCHEMA")) {
             $this->select("{$this->table}.*");
@@ -35,7 +35,7 @@ class Model extends \CodeIgniter\Model
         return $this;
     }
 
-    protected function _buildSchema($schema = [], $options = []): void
+    protected function _buildSchema($schema = [], $options = [])
     {
         foreach ($schema as $name => $definition) {
             $entity = array_shift($definition);

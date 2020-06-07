@@ -7,21 +7,21 @@ class View
     /**
      * @var string
      */
-    protected string $_name = 'Xpander';
+    protected $_name = 'Xpander';
 
     /**
      * @var string
      */
-    protected string $_view = 'Main';
+    protected $_view = 'Main';
 
     /**
      * @var \CI4Xpander\View\Data
      */
-    public ?\CI4Xpander\View\Data $data = null;
+    public $data = null;
 
     use \CI4Xpander\ClassInitializerTrait, \CI4Xpander\PropertyInitializerTrait, \CI4Xpander\ViewFactoryTrait;
 
-    public function __construct(array $config = [])
+    public function __construct($config = [])
     {
         if (empty($this->_name)) {
             throw new \Exception('View name cannot empty or null');
@@ -42,7 +42,7 @@ class View
      * @param string $view
      * @return string
      */
-    public function render($view = ''): string
+    public function render($view = '')
     {
         if (!empty($view)) {
             $this->_view = $view;

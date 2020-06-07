@@ -6,7 +6,7 @@ class Migration extends \CodeIgniter\Database\Migration
 {
     use \CI4Xpander\ClassInitializerTrait;
 
-    public function __construct(\CodeIgniter\Database\Forge $forge = null)
+    public function __construct(?\CodeIgniter\Database\Forge $forge = null)
     {
         parent::__construct($forge);
 

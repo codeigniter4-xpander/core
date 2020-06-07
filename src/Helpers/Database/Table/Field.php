@@ -11,7 +11,7 @@ class Field
         'name' => 'id',
         'type' => 'INT',
         'unsigned' => true
-    ]): array
+    ])
     {
         return [
             $default['name'] ?? 'id' => [
@@ -27,7 +27,7 @@ class Field
         'type' => 'VARCHAR',
         'length' => 255,
         'null' => true
-    ]): array
+    ])
     {
         return [
             $name => [
@@ -41,7 +41,7 @@ class Field
     public static function timestamp($name = '', $default = [
         'type' => 'TIMESTAMP',
         'null' => true
-    ]): array
+    ])
     {
         return [
             $name => [
@@ -54,7 +54,7 @@ class Field
     public static function date($name = '', $default = [
         'type' => 'DATE',
         'null' => true
-    ]): array
+    ])
     {
         return [
             $name => [
@@ -67,7 +67,7 @@ class Field
     public static function time($name = '', $default = [
         'type' => 'TIME',
         'null' => true
-    ]): array
+    ])
     {
         return [
             $name => [
@@ -82,7 +82,7 @@ class Field
         'unsigned' => true,
         'null' => false,
         'default' => 0,
-    ]): array
+    ])
     {
         return [
             $name . '_id' => [
@@ -99,7 +99,7 @@ class Field
         'unsigned' => true,
         'null' => false,
         'default' => 0,
-    ]): array
+    ])
     {
         return [
             $name . '_id' => [
@@ -116,7 +116,7 @@ class Field
         'unsigned' => false,
         'null' => false,
         'default' => 0
-    ]): array
+    ])
     {
         return [
             $name => [
@@ -133,7 +133,7 @@ class Field
         'unsigned' => true,
         'null' => false,
         'default' => 99,
-    ]): array
+    ])
     {
         return [
             $name => [
@@ -148,7 +148,7 @@ class Field
     public static function text($name = '', $default = [
         'type' => 'TEXT',
         'null' => true
-    ]): array
+    ])
     {
         return [
             $name => [
@@ -163,7 +163,7 @@ class Field
         'null' => false,
         'default' => 0,
         'unsigned' => false
-    ]): array
+    ])
     {
         return [
             $name => [
@@ -175,7 +175,7 @@ class Field
         ];
     }
 
-    public static function trackable(): array
+    public static function trackable()
     {
         return [
             'created_at' => [
@@ -214,7 +214,7 @@ class Field
     public static function boolean($name = '', $default = [
         'null' => false,
         'default' => false
-    ]): array
+    ])
     {
         return [
             $name => [
@@ -228,7 +228,7 @@ class Field
     public static function json($name = '', $default = [
         'null' => true,
         'default' => null
-    ]): array
+    ])
     {
         return [
             $name => [

@@ -2,17 +2,15 @@
 
 namespace CI4Xpander;
 
-use phpDocumentor\Reflection\DocBlockFactory;
-
 trait DocBlockTrait
 {
     /**
-     * @var DocBlockFactory
+     * @var \phpDocumentor\Reflection\DocBlockFactory
      */
-    protected DocBlockFactory $_docBlockFactory;
+    protected $_docBlockFactory;
 
     protected function _initDocBlock()
     {
-        $this->_docBlockFactory = DocBlockFactory::createInstance();
+        $this->_docBlockFactory = \phpDocumentor\Reflection\DocBlockFactory::createInstance();
     }
 }

@@ -7,7 +7,7 @@ trait ReflectionClassTrait
     /**
      * @var \ReflectionClass
      */
-    protected \ReflectionClass $_reflectionClass;
+    protected $_reflectionClass;
 
     protected function _initReflectionClass()
     {

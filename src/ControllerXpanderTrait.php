@@ -7,5 +7,5 @@ trait ControllerXpanderTrait
     /**
      * @var bool
      */
-    protected bool $_xpandController = true;
+    protected $_xpandController = true;
 }

@@ -8,7 +8,7 @@ trait ComponentFactoryTrait
      * @param Data $data
      * @return self
      */
-    public static function create(Data $data = null)
+    public static function create($data = null)
     {
         return new self($data);
     }

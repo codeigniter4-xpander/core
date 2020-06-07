@@ -7,21 +7,24 @@ class Component
     /**
      * @var string
      */
-    protected string $_name = '';
+    protected $_name = '';
 
     /**
      * @var string
      */
-    protected string $_view = 'Main';
+    protected $_view = 'Main';
 
     /**
      * @var \CI4Xpander\View\Data
      */
-    public ?\CI4Xpander\View\Data $data = null;
+    public $data = null;
 
     use \CI4Xpander\ClassInitializerTrait, \CI4Xpander\PropertyInitializerTrait, \CI4Xpander\View\ComponentFactoryTrait;
 
-    public function __construct(Data $data = null)
+    /**
+     * @param \CI4Xpander\View\Data|null $data
+     */
+    public function __construct($data = null)
     {
         $this->_initReflectionClass();
         $this->_initDocBlock();

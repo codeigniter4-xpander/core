@@ -8,7 +8,7 @@ trait DataFactoryTrait
      * @param array $data
      * @return self
      */
-    public static function create(array $data = [])
+    public static function create($data = [])
     {
         return new self($data);
     }
