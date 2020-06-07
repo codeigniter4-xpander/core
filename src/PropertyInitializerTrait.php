@@ -1,6 +1,4 @@
-<?php
-
-namespace CI4Xpander;
+<?php namespace CI4Xpander;
 
 trait PropertyInitializerTrait
 {
@@ -9,44 +7,47 @@ trait PropertyInitializerTrait
     protected function _initProperty()
     {
         foreach ($this->_reflectionClass->getProperties() as $property) {
-            if ($property->hasType()) {
-                $property->setAccessible(true);
+            $property->setAccessible(true);
 
-                $doInitialize = false;
-                if ($property->isInitialized($this)) {
-                    if (is_null($this->{$property->name})) {
-                        $doInitialize = true;
-                    }
-                } else {
+            $doInitialize = false;
+            if ($property->isInitialized($this)) {
+                if (is_null($this->{$property->name})) {
                     $doInitialize = true;
                 }
+            } else {
+                $doInitialize = true;
+            }
 
-                if ($doInitialize) {
-                    $class = null;
-                    if ($property->getDocComment() != false) {
-                        $propertyDoc = $this->_docBlockFactory->create($property->getDocComment());
-                        foreach ($propertyDoc->getTagsByName('var') as $var) {
-                            if ($var->getVariableName() == $property->name) {
-                                $class = strval($var->getType()->getFqsen());
+            if ($doInitialize) {
+                $class = null;
+
+                if ($property->getDocComment() != false) {
+                    $propertyDoc = $this->_docBlockFactory->create($property->getDocComment());
+                    foreach ($propertyDoc->getTagsByName('var') as $var) {
+                        if ($var->getVariableName() == $property->name) {
+                            $class = strval($var->getType()->getFqsen());
+                        }
+                    }
+                }
+
+                if (is_null($class)) {
+                    if ($this->_reflectionClass->getDocComment() != false) {
+                        $classDoc = $this->_docBlockFactory->create($this->_reflectionClass->getDocComment());
+                        foreach ($classDoc->getTagsByName('property') as $p) {
+                            if ($p->getVariableName() == $property->name) {
+                                $class = strval($p->getType()->getFqsen());
                             }
                         }
                     }
+                }
 
-                    if (is_null($class)) {
-                        if ($this->_reflectionClass->getDocComment() != false) {
-                            $classDoc = $this->_docBlockFactory->create($this->_reflectionClass->getDocComment());
-                            foreach ($classDoc->getTagsByName('property') as $p) {
-                                if ($p->getVariableName() == $property->name) {
-                                    $class = strval($p->getType()->getFqsen());
-                                }
-                            }
-                        }
-                    }
-
-                    if (is_null($class)) {
+                if (is_null($class)) {
+                    if ($property->hasType()) {
                         $class = $property->getType()->getName();
                     }
+                }
 
+                if (!is_null($class)) {
                     $this->{$property->name} = new $class();
                 }
             }
