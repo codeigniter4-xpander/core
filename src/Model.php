@@ -10,16 +10,19 @@ class Model extends \CodeIgniter\Model
     protected $dateFormat = 'datetime';
 
     /**
-     * @var boolean
+     * @var bool
      */
-    protected $withSchema = false;
+    protected bool $withSchema = false;
 
     /**
      * @var ReflectionClass[]
      */
     protected array $_savedEntityReflection = [];
 
-    public function withSchema()
+    /**
+     * @return self
+     */
+    public function withSchema(): self
     {
         if (defined("{$this->returnType}::SCHEMA")) {
             $this->select("{$this->table}.*");
@@ -27,14 +30,12 @@ class Model extends \CodeIgniter\Model
             $this->_buildSchema(constant("{$this->returnType}::SCHEMA"), [
                 '$name' => $this->table
             ]);
-
-            d($this->_savedEntityReflection['Xpander\Entities\User\Role']->getDefaultProperties()['casts']);
         }
 
         return $this;
     }
 
-    protected function _buildSchema($schema = [], $options = [])
+    protected function _buildSchema($schema = [], $options = []): void
     {
         foreach ($schema as $name => $definition) {
             $entity = array_shift($definition);

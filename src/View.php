@@ -7,12 +7,12 @@ class View
     /**
      * @var string
      */
-    protected $_name = 'Xpander';
+    protected string $_name = 'Xpander';
 
     /**
      * @var string
      */
-    protected $_view = 'Main';
+    protected string $_view = 'Main';
 
     /**
      * @var \CI4Xpander\View\Data
