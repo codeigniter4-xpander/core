@@ -47,14 +47,17 @@ class Component
     public function render()
     {
         $autoloader = \Config\Services::autoloader();
-        $viewFile = realpath($autoloader->getNamespace(explode('\View\Component', $this->_reflectionClass->getNamespaceName())[0])[0]) . '/Views/Component/' . $this->_reflectionClass->getShortName() . '/' . $this->_view . '.php';
+        $exName = explode('\View\Component\\', $this->_reflectionClass->getName());
+        $viewFile = realpath($autoloader->getNamespace($exName[0])[0]) . '/Views/Component/' . str_replace('\\', '/', $exName[1]) . '/' . $this->_view . '.php';
 
         $baseDir = str_replace('\View\Component\\', '\Views\Component\\', $this->_reflectionClass->getName());
+
         if (!file_exists($viewFile)) {
             $parents = class_parents($this);
             foreach ($parents as $parent) {
                 $reflection = new \ReflectionClass($parent);
-                $viewFile = realpath($autoloader->getNamespace(explode('\View\Component', $reflection->getNamespaceName())[0])[0]) . '/Views/Component/' . $reflection->getShortName() . '/' . $this->_view . '.php';
+                $exName = explode('\View\Component\\', $reflection->getName());
+                $viewFile = realpath($autoloader->getNamespace($exName[0])[0]) . '/Views/Component/' . str_replace('\\', '/', $exName[1]) . '/' . $this->_view . '.php';
                 if (file_exists($viewFile)) {
                     $baseDir = str_replace('\View\Component\\', '\Views\Component\\', $reflection->getName());
                     break;
