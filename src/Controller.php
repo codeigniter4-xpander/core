@@ -1,11 +1,9 @@
-<?php
-
-namespace CI4Xpander;
+<?php namespace CI4Xpander;
 
 class Controller extends \CodeIgniter\Controller
 {
     /**
-     * @var Xpander\View
+     * @var \CI4Xpander\View $view
      */
     protected $view;
 

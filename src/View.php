@@ -1,13 +1,11 @@
-<?php
-
-namespace CI4Xpander;
+<?php namespace CI4Xpander;
 
 class View
 {
     /**
      * @var string
      */
-    protected $_name = 'Xpander';
+    protected $_name = 'CI4Xpander';
 
     /**
      * @var string
@@ -64,7 +62,7 @@ class View
             }
         }
 
-        return view($baseDir . '\Views\\' . $this->_view, [
+        return view($baseDir . '\\Views\\' . $this->_view, [
             'data' => $this->data
         ]);
     }
