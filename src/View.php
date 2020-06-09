@@ -36,6 +36,15 @@ class View
         $this->_init();
     }
 
+    public function fillData($data = [])
+    {
+        foreach ($data as $name => $value) {
+            $this->data->{$name} = $value;
+        }
+
+        return $this;
+    }
+
     /**
      * @param string $view
      * @return string
@@ -65,5 +74,10 @@ class View
         return view($baseDir . '\\Views\\' . $this->_view, [
             'data' => $this->data
         ]);
+    }
+
+    public function __toString()
+    {
+        return $this->render();
     }
 }

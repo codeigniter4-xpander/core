@@ -10,11 +10,6 @@ class Model extends \CodeIgniter\Model
     protected $dateFormat = 'datetime';
 
     /**
-     * @var bool
-     */
-    protected $withSchema = false;
-
-    /**
      * @var ReflectionClass[]
      */
     protected $_savedEntityReflection = [];
@@ -22,7 +17,7 @@ class Model extends \CodeIgniter\Model
     /**
      * @return self
      */
-    public function withSchema()
+    public function withScheme()
     {
         if (defined("{$this->returnType}::SCHEMA")) {
             $this->select("{$this->table}.*");
@@ -30,6 +25,8 @@ class Model extends \CodeIgniter\Model
             $this->_buildSchema(constant("{$this->returnType}::SCHEMA"), [
                 '$name' => $this->table
             ]);
+
+            d($this->_savedEntityReflection);
         }
 
         return $this;
@@ -62,9 +59,9 @@ class Model extends \CodeIgniter\Model
                 $entityReflection = $this->_savedEntityReflection[$entity];
             }
 
-            foreach ($entityReflection->getDefaultProperties()['casts'] as $fieldName => $fieldType) {
-                $this->select("{$alias}.{$fieldName} {$alias}_{$fieldName}");
-            }
+            // foreach ($entityReflection->getDefaultProperties()['casts'] as $fieldName => $fieldType) {
+            //     $this->select("{$alias}.{$fieldName} {$alias}_{$fieldName}");
+            // }
 
             $this->join("{$name} {$alias}", "{$alias}.{$target} = {$sourceName}.{$source}", 'left');
 
@@ -73,4 +70,6 @@ class Model extends \CodeIgniter\Model
             ]);
         }
     }
+
+    use ModelFactoryTrait;
 }

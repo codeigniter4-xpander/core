@@ -44,6 +44,15 @@ class Component
         $this->_init();
     }
 
+    public function fillData($data = [])
+    {
+        foreach ($data as $name => $value) {
+            $this->data->{$name} = $value;
+        }
+
+        return $this;
+    }
+
     public function render()
     {
         $autoloader = \Config\Services::autoloader();
@@ -68,5 +77,10 @@ class Component
         return view($baseDir . '\\' . $this->_view, [
             'data' => $this->data
         ]);
+    }
+
+    public function __toString()
+    {
+        return $this->render();
     }
 }
