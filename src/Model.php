@@ -25,8 +25,6 @@ class Model extends \CodeIgniter\Model
             $this->_buildSchema(constant("{$this->returnType}::SCHEMA"), [
                 '$name' => $this->table
             ]);
-
-            d($this->_savedEntityReflection);
         }
 
         return $this;
