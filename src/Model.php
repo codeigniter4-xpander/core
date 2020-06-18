@@ -12,7 +12,7 @@ class Model extends \CodeIgniter\Model
     public function __construct(\CodeIgniter\Database\ConnectionInterface &$db = null, \CodeIgniter\Validation\ValidationInterface $validation = null)
     {
         $this->allowedFields = array_merge($this->allowedFields, [
-            'created_at', 'updated_at', 'deleted_at', 'created_by', 'updated_at', 'deleted_by'
+            'created_at', 'updated_at', 'deleted_at', 'created_by', 'updated_by', 'deleted_by'
         ]);
 
         parent::__construct($db, $validation);
