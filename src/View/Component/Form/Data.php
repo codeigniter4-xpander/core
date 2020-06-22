@@ -6,6 +6,7 @@ class Data extends \CI4Xpander\View\Data
     public $action = '';
     public $hidden = [];
     public $input = [];
+    public $attributes = [];
 
     use \CI4Xpander\View\DataFactoryTrait;
 }

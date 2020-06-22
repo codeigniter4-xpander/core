@@ -1,5 +1,8 @@
 <?php namespace CI4Xpander\View\Component;
 
+/**
+ * @property \CI4Xpander\View\Component\Form\Data $data
+ */
 class Form extends \CI4Xpander\View\Component
 {
     protected $_name = 'Form';
