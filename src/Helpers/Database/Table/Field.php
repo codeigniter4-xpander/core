@@ -175,6 +175,23 @@ class Field
         ];
     }
 
+    public static function real($name = '', $default = [
+        'type' => 'REAL',
+        'null' => false,
+        'default' => 0,
+        'unsigned' => false
+    ])
+    {
+        return [
+            $name => [
+                'type' => $default['type'] ?? 'REAL',
+                'null' => $default['null'] ?? false,
+                'default' => $default['default'] ?? 0,
+                'unsigned' => $default['unsigned'] ?? false
+            ]
+        ];
+    }
+
     public static function trackable()
     {
         return [
