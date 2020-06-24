@@ -59,7 +59,9 @@ trait PropertyInitializerTrait
                                 if ($parentProperty->class == $parentReflection->getName()) {
                                     $parentPropertyDoc = $this->_docBlockFactory->create($parentProperty->getDocComment());
                                     foreach ($parentPropertyDoc->getTagsByName('var') as $var) {
-                                        $class = strval($var->getType()->getFqsen());
+                                        if (method_exists($var->getType(), 'getFqsen')) {
+                                            $class = strval($var->getType()->getFqsen());
+                                        }
                                     }
                                 }
                             }
