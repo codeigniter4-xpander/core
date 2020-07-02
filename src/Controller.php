@@ -21,16 +21,6 @@ class Controller extends \CodeIgniter\Controller
 
     protected function _render($function = null)
     {
-        $_action = $this->request->getPost('_action');
-        if ($_action) {
-            if (method_exists($this, '_action_' . $_action)) {
-                $result = $this->{'_action_' . $_action}();
-                if (!is_null($result)) {
-                    return $result;
-                }
-            }
-        }
-
         if (!is_null($function)) {
             if (is_callable($function)) {
                 return $function();
