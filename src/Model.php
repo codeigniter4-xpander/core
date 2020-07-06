@@ -78,5 +78,36 @@ class Model extends \CodeIgniter\Model
         }
     }
 
+    protected $beforeInsert = [
+        '_generateInsertTrackable'
+    ];
+
+    protected $beforeUpdate = [
+        '_generateUpdateTrackable'
+    ];
+
+    protected function _generateInsertTrackable($data)
+    {
+        $session = \Config\Services::session();
+        if ($session->has('user')) {
+            $user = (object) $session->get('user');
+            $data['created_by'] = $user->id;
+            $data['updated_by'] = $user->id;
+        }
+
+        return $data;
+    }
+
+    protected function _generateUpdateTrackable($id, $data)
+    {
+        $session = \Config\Services::session();
+        if ($session->has('user')) {
+            $user = (object) $session->get('user');
+            $data['updated_by'] = $user->id;
+        }
+
+        return $data;
+    }
+
     use ModelFactoryTrait;
 }
