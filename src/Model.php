@@ -86,27 +86,27 @@ class Model extends \CodeIgniter\Model
         '_generateUpdateTrackable'
     ];
 
-    protected function _generateInsertTrackable($data)
+    protected function _generateInsertTrackable($params)
     {
         $session = \Config\Services::session();
         if ($session->has('user')) {
             $user = (object) $session->get('user');
-            $data['created_by'] = $user->id;
-            $data['updated_by'] = $user->id;
+            $params['data']['created_by'] = $user->id;
+            $params['data']['updated_by'] = $user->id;
         }
 
-        return $data;
+        return $params;
     }
 
-    protected function _generateUpdateTrackable($id, $data)
+    protected function _generateUpdateTrackable($params)
     {
         $session = \Config\Services::session();
         if ($session->has('user')) {
             $user = (object) $session->get('user');
-            $data['updated_by'] = $user->id;
+            $params['data']['updated_by'] = $user->id;
         }
 
-        return $data;
+        return $params;
     }
 
     use ModelFactoryTrait;
