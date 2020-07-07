@@ -73,6 +73,8 @@ class View
 
         return view($baseDir . '\\Views\\' . $this->_view, [
             'data' => $this->data
+        ], [
+            'saveData' => false
         ]);
     }
 

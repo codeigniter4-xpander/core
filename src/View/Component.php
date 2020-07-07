@@ -76,6 +76,8 @@ class Component
 
         return view($baseDir . '\\' . $this->_view, [
             'data' => $this->data
+        ], [
+            'saveData' => false
         ]);
     }
 
