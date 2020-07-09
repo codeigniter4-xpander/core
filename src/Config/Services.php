@@ -10,4 +10,13 @@ class Services extends \CodeIgniter\Config\Services
 
         return new \CI4Xpander\View\Component\Script();
     }
+
+    public static function modelTracker(bool $shared = true)
+    {
+        if ($shared) {
+            return static::getSharedInstance('modelTracker');
+        }
+
+        return new \CI4Xpander\Model\Tracker();
+    }
 }

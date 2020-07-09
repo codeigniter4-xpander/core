@@ -88,23 +88,17 @@ class Model extends \CodeIgniter\Model
 
     protected function _generateInsertTrackable($params)
     {
-        $session = \Config\Services::session();
-        if ($session->has('user')) {
-            $user = (object) $session->get('user');
-            $params['data']['created_by'] = $user->id;
-            $params['data']['updated_by'] = $user->id;
-        }
+        $tracker = \Config\Services::modelTracker();
+        $params['data']['created_by'] = $tracker->getCreatedBy();
+        $params['data']['updated_by'] = $tracker->getUpdatedBy();
 
         return $params;
     }
 
     protected function _generateUpdateTrackable($params)
     {
-        $session = \Config\Services::session();
-        if ($session->has('user')) {
-            $user = (object) $session->get('user');
-            $params['data']['updated_by'] = $user->id;
-        }
+        $tracker = \Config\Services::modelTracker();
+        $params['data']['updated_by'] = $tracker->getUpdatedBy();
 
         return $params;
     }
