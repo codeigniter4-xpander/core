@@ -89,17 +89,15 @@ class Model extends \CodeIgniter\Model
     protected function _generateInsertTrackable($params)
     {
         $tracker = \Config\Services::modelTracker();
-        $params['data']['created_by'] = $tracker->getCreatedBy();
-        $params['data']['updated_by'] = $tracker->getUpdatedBy();
-
+        $params['data']['created_by'] = $params['data']['created_by'] ?? $tracker->getCreatedBy();
+        $params['data']['updated_by'] = $params['data']['updated_by'] ?? $tracker->getUpdatedBy();
         return $params;
     }
-
+    
     protected function _generateUpdateTrackable($params)
     {
         $tracker = \Config\Services::modelTracker();
-        $params['data']['updated_by'] = $tracker->getUpdatedBy();
-
+        $params['data']['updated_by'] = $params['data']['updated_by'] ?? $tracker->getUpdatedBy();
         return $params;
     }
 
