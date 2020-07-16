@@ -19,7 +19,7 @@ class Auth implements \CodeIgniter\Filters\FilterInterface
 
     }
 
-    public function after(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response)
+    public function after(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, $params = null)
     {
 
     }
