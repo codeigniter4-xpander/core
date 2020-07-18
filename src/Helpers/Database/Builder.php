@@ -14,11 +14,11 @@ class Builder {
                 $doPrefix = true;
             }
         } elseif (is_array($prefix)) {
-            
+
         } else {
             $doPrefix = false;
         }
-        
+
         $result = [];
 
         foreach ($fields as $key => $field) {
@@ -37,5 +37,15 @@ class Builder {
         }
 
         return $result;
+    }
+
+    public static function escape($value = '')
+    {
+        return \Config\Database::connect()->escape($value);
+    }
+
+    public static function protect($identifier = '')
+    {
+        return \Config\Database::connect()->protectIdentifiers($identifier);
     }
 }
