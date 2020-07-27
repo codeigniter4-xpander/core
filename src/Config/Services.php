@@ -36,8 +36,6 @@ class Services extends \CodeIgniter\Config\Services
                     $algo = PASSWORD_DEFAULT;
                 break;
             }
-    
-            return $algo;
         }
 
         return password_hash($password, $algo);
