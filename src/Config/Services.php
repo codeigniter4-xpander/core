@@ -37,7 +37,7 @@ class Services extends \CodeIgniter\Config\Services
                 break;
             }
     
-            return $$algo;
+            return $algo;
         }
 
         return password_hash($password, $algo);
