@@ -18,6 +18,11 @@ class Model extends \CodeIgniter\Model
         parent::__construct($db, $validation);
     }
 
+    public function getTable()
+    {
+        return $this->table;
+    }
+
     /**
      * @var ReflectionClass[]
      */
