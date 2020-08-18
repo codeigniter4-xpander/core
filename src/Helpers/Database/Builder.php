@@ -48,4 +48,13 @@ class Builder {
     {
         return \Config\Database::connect()->protectIdentifiers($identifier);
     }
+
+    public static function subQuery($query, $alias)
+    {
+        if (is_a($query, \CodeIgniter\Database\BaseBuilder::class)) {
+            $query = $query->getCompiledSelect();
+        }
+
+        return "({$query}) {$alias}";
+    }
 }
