@@ -21,16 +21,6 @@ class Controller extends \CodeIgniter\Controller
 
     protected function _render($function = null)
     {
-        if ($this->request->getPost('_action')) {
-            $methodName = '_action_' . $this->request->getPost('_action');
-            if (method_exists($this, $methodName)) {
-                $action = $this->{$methodName}();
-                if (!is_null($action)) {
-                    return $action;
-                }
-            }
-        }
-
         if (!is_null($function)) {
             if (is_callable($function)) {
                 return $function();
@@ -38,5 +28,18 @@ class Controller extends \CodeIgniter\Controller
         }
 
         throw new \Exception('Cannot render');
+    }
+
+    protected function _action(...$params)
+    {
+        if ($this->request->getPost('_action')) {
+            $methodName = '_action_' . $this->request->getPost('_action');
+            if (method_exists($this, $methodName)) {
+                $action = $this->{$methodName}(...$params);
+                if (!is_null($action)) {
+                    return $action;
+                }
+            }
+        }
     }
 }
