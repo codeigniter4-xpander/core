@@ -41,5 +41,7 @@ class Controller extends \CodeIgniter\Controller
                 }
             }
         }
+
+        return null;
     }
 }
