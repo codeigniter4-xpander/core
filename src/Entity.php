@@ -17,9 +17,9 @@ class Entity extends \CodeIgniter\Entity
         $this->casts['created_by'] = 'integer';
         $this->casts['updated_by'] = 'integer';
         $this->casts['deleted_by'] = 'integer';
-        $this->casts['created_at'] = 'datetime';
-        $this->casts['updated_at'] = 'datetime';
-        $this->casts['deleted_at'] = 'datetime';
+        $this->casts['created_at'] = 'string';
+        $this->casts['updated_at'] = 'string';
+        $this->casts['deleted_at'] = 'string';
 
         parent::__construct($data);
     }
