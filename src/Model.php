@@ -9,6 +9,8 @@ class Model extends \CodeIgniter\Model
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
 
+    protected $historyModel = null;
+
     public function __construct(\CodeIgniter\Database\ConnectionInterface &$db = null, \CodeIgniter\Validation\ValidationInterface $validation = null)
     {
         $this->allowedFields = array_merge($this->allowedFields, [
@@ -16,6 +18,20 @@ class Model extends \CodeIgniter\Model
         ]);
 
         parent::__construct($db, $validation);
+
+        $this->_init();
+    }
+
+    protected function _init()
+    {
+        $this->beforeInsert[] = '_generateInsertTrackable';
+        $this->beforeUpdate[] = '_generateUpdateTrackable';
+        $this->beforeDelete[] = '_generateDeleteTrackable';
+
+        if (!is_null($this->historyModel)) {
+            $this->afterInsert[] = '_insertRiwayat';
+            $this->afterUpdate[] = '_insertRiwayat';
+        }
     }
 
     public function getTable()
@@ -23,73 +39,19 @@ class Model extends \CodeIgniter\Model
         return $this->table;
     }
 
-    /**
-     * @var ReflectionClass[]
-     */
-    protected $_savedEntityReflection = [];
-
-    /**
-     * @return self
-     */
-    public function withScheme()
+    protected function _insertRiwayat($params)
     {
-        if (defined("{$this->returnType}::SCHEMA")) {
-            $this->select("{$this->table}.*");
+        if (!is_null($this->historyModel)) {
+            if ($params['id'] > 0) {
+                $item = $this->find($params['id'])->toArray();
+                unset($item['id']);
 
-            $this->_buildSchema(constant("{$this->returnType}::SCHEMA"), [
-                '$name' => $this->table
-            ]);
-        }
-
-        return $this;
-    }
-
-    protected function _buildSchema($schema = [], $options = [])
-    {
-        foreach ($schema as $name => $definition) {
-            $entity = array_shift($definition);
-
-            $source = 'id';
-            if (array_key_exists('$source', $definition)) {
-                $source = $definition['$source'];
-                unset($definition['$source']);
+                $this->historyModel::create()->insert(array_merge($item, [
+                    'master_id' => $params['id']
+                ]));
             }
-
-            $target = 'id';
-            if (array_key_exists('$target', $definition)) {
-                $target = $definition['$target'];
-                unset($definition['$target']);
-            }
-
-            $sourceName = $options['$name'];
-            $alias = "{$sourceName}_{$name}";
-
-            if (!array_key_exists($entity, $this->_savedEntityReflection)) {
-                $entityReflection = new \ReflectionClass($entity);
-                $this->_savedEntityReflection[$entity] = $entityReflection;
-            } else {
-                $entityReflection = $this->_savedEntityReflection[$entity];
-            }
-
-            // foreach ($entityReflection->getDefaultProperties()['casts'] as $fieldName => $fieldType) {
-            //     $this->select("{$alias}.{$fieldName} {$alias}_{$fieldName}");
-            // }
-
-            $this->join("{$name} {$alias}", "{$alias}.{$target} = {$sourceName}.{$source}", 'left');
-
-            $this->_buildSchema($definition, [
-                '$name' => $alias,
-            ]);
         }
     }
-
-    protected $beforeInsert = [
-        '_generateInsertTrackable'
-    ];
-
-    protected $beforeUpdate = [
-        '_generateUpdateTrackable'
-    ];
 
     protected function _generateInsertTrackable($params)
     {
@@ -103,6 +65,13 @@ class Model extends \CodeIgniter\Model
     {
         $tracker = \Config\Services::modelTracker();
         $params['data']['updated_by'] = $params['data']['updated_by'] ?? $tracker->getUpdatedBy();
+        return $params;
+    }
+
+    protected function _generateDeleteTrackable($params)
+    {
+        $tracker = \Config\Services::modelTracker();
+        $params['data']['deleted_by'] = $params['data']['deleted_by'] ?? $tracker->getDeletedBy();
         return $params;
     }
 

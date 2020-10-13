@@ -255,4 +255,19 @@ class Field
             ]
         ];
     }
+
+    public static function numeric($name = '', $default = [
+        'null' => true,
+        'default' => 0,
+        'unsigned' => false
+    ]) {
+        return [
+            $name => [
+                'type' => 'NUMERIC',
+                'null' => $default['null'] ?? true,
+                'default' => $default['default'] ?? 0,
+                'unsigned' => $default['unsigned'] ?? false
+            ]
+        ];
+    }
 }
