@@ -42,13 +42,26 @@ class Model extends \CodeIgniter\Model
     protected function _insertRiwayat($params)
     {
         if (!is_null($this->historyModel)) {
-            if ($params['id'] > 0) {
-                $item = $this->find($params['id'])->toArray();
-                unset($item['id']);
-
-                $this->historyModel::create()->insert(array_merge($item, [
-                    'master_id' => $params['id']
-                ]));
+            if (is_array($params['id'])) {
+                foreach ($params['id'] as $id) {
+                    if ($id > 0) {
+                        $item = $this->find($id)->toRawArray();
+                        unset($item['id']);
+        
+                        $this->historyModel::create()->insert(array_merge($item, [
+                            'master_id' => $id
+                        ]));
+                    }
+                }
+            } else {
+                if ($params['id'] > 0) {
+                    $item = $this->find($params['id'])->toRawArray();
+                    unset($item['id']);
+    
+                    $this->historyModel::create()->insert(array_merge($item, [
+                        'master_id' => $params['id']
+                    ]));
+                }
             }
         }
     }
