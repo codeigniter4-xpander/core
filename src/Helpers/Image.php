@@ -14,4 +14,13 @@ class Image
 
         return $fileName;
     }
+
+    public static function getBase64($path = '')
+    {
+        $base64Encoder = \Melihovv\Base64ImageDecoder\Base64ImageEncoder::fromFileName($path, [
+            'jpg', 'jpeg', 'png'
+        ]);
+
+        return $base64Encoder->getDataUri();
+    }
 }
