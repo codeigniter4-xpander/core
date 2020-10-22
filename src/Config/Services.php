@@ -40,4 +40,13 @@ class Services extends \CodeIgniter\Config\Services
 
         return password_hash($password, $algo);
     }
+
+    public static function message($type = null, $value = null, bool $shared = true)
+    {
+        if ($shared) {
+            return static::getSharedInstance('message', $type, $value);
+        }
+
+        return \CI4Xpander\Helpers\Message::create($type, $value);
+    }
 }
