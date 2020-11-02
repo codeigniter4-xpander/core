@@ -49,4 +49,14 @@ class Services extends \CodeIgniter\Config\Services
 
         return \CI4Xpander\Helpers\Message::create($type, $value);
     }
+
+    public static function routes(bool $getShared = true)
+	{
+		if ($getShared)
+		{
+			return static::getSharedInstance('routes');
+		}
+
+		return new \CI4Xpander\Core\RouteCollection(static::locator(), config('Modules'));
+	}
 }
