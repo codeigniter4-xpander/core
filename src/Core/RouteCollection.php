@@ -179,8 +179,6 @@ class RouteCollection extends \CodeIgniter\Router\RouteCollection {
 				$this->currentOptions['namespace'] = $this->currentOptions['versionNamespace'] . '\\' . 'V_' . str_replace('.', '_', $findVersion) . str_replace($this->currentOptions['versionNamespace'], '', $originalNamesapce);
 			}
 
-			// d($this->currentOptions);
-
 			$this->create($verb, $from, $to, $options);
 
 			$this->currentOptions['versionGroup'] = $originalVersionGroup;
@@ -196,6 +194,90 @@ class RouteCollection extends \CodeIgniter\Router\RouteCollection {
 			$this->generateVersioning('get', $from, $to, $options);
 		} else {
 			$this->create('get', $from, $to, $options);
+		}
+
+		return $this;
+	}
+
+	public function post(string $from, $to, array $options = null): RouteCollectionInterface
+	{
+		$withVersion = $options['withVersion'] ?? ($this->currentOptions['withVersion'] ?? false);
+		if ($withVersion) {
+			$this->generateVersioning('post', $from, $to, $options);
+		} else {
+			$this->create('post', $from, $to, $options);
+		}
+
+		return $this;
+	}
+
+	public function put(string $from, $to, array $options = null): RouteCollectionInterface
+	{
+		$withVersion = $options['withVersion'] ?? ($this->currentOptions['withVersion'] ?? false);
+		if ($withVersion) {
+			$this->generateVersioning('put', $from, $to, $options);
+		} else {
+			$this->create('put', $from, $to, $options);
+		}
+
+		return $this;
+	}
+
+	public function delete(string $from, $to, array $options = null): RouteCollectionInterface
+	{
+		$withVersion = $options['withVersion'] ?? ($this->currentOptions['withVersion'] ?? false);
+		if ($withVersion) {
+			$this->generateVersioning('delete', $from, $to, $options);
+		} else {
+			$this->create('delete', $from, $to, $options);
+		}
+
+		return $this;
+	}
+
+	public function head(string $from, $to, array $options = null): RouteCollectionInterface
+	{
+		$withVersion = $options['withVersion'] ?? ($this->currentOptions['withVersion'] ?? false);
+		if ($withVersion) {
+			$this->generateVersioning('head', $from, $to, $options);
+		} else {
+			$this->create('head', $from, $to, $options);
+		}
+
+		return $this;
+	}
+
+	public function patch(string $from, $to, array $options = null): RouteCollectionInterface
+	{
+		$withVersion = $options['withVersion'] ?? ($this->currentOptions['withVersion'] ?? false);
+		if ($withVersion) {
+			$this->generateVersioning('patch', $from, $to, $options);
+		} else {
+			$this->create('patch', $from, $to, $options);
+		}
+
+		return $this;
+	}
+
+	public function options(string $from, $to, array $options = null): RouteCollectionInterface
+	{
+		$withVersion = $options['withVersion'] ?? ($this->currentOptions['withVersion'] ?? false);
+		if ($withVersion) {
+			$this->generateVersioning('options', $from, $to, $options);
+		} else {
+			$this->create('options', $from, $to, $options);
+		}
+
+		return $this;
+	}
+
+	public function cli(string $from, $to, array $options = null): RouteCollectionInterface
+	{
+		$withVersion = $options['withVersion'] ?? ($this->currentOptions['withVersion'] ?? false);
+		if ($withVersion) {
+			$this->generateVersioning('cli', $from, $to, $options);
+		} else {
+			$this->create('cli', $from, $to, $options);
 		}
 
 		return $this;
