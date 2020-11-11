@@ -74,4 +74,81 @@ class Builder {
 
         return $query;
     }
+
+    public static function fromJSON(\CodeIgniter\Database\BaseBuilder $query, $condition)
+    {
+        if (isset($condition->select)) {
+            $query = self::_doSelect($query, (array) $condition->select);
+        }
+
+        if (isset($condition->where)) {
+            $query = self::_doWhere($query, (array) $condition->where);
+        }
+
+        return $query;
+    }
+
+    private static function _doSelect(\CodeIgniter\Database\BaseBuilder $query, $select = [])
+    {
+        foreach ($select as $s) {
+            $query->select($s);
+        }
+
+        return $query;
+    }
+
+    private static function _doWhere(\CodeIgniter\Database\BaseBuilder $query, $where = [])
+    {
+        foreach ($where as $conCol => $val) {
+            $exConCol = explode(':', $conCol);
+            if (is_object($val)) {
+                $or = false;
+                if (count($exConCol) == 2) {
+                    if ($exConCol[0] == 'OR') {
+                        $or = true;
+                    }
+                }
+
+                if ($or) {
+                    $query->orGroupStart();
+                } else {
+                    $query->groupStart();
+                }
+
+                $query = self::_doWhere($query, (array) $val);
+
+                $query->groupEnd();
+            } else {
+                if (count($exConCol) == 1) {
+                    $query->where($exConCol[0], $val);
+                } elseif (count($exConCol) == 2) {
+                    if ($exConCol[1] == 'LIKE') {
+                        $query->like($exConCol[0], $val);
+                    } elseif ($exConCol[1] == 'ILIKE') {
+                        $query->like(Builder::protect($exConCol[0]), $val, 'both', null, true);
+                    } elseif ($exConCol[0] == 'OR') {
+                        $query->orWhere($exConCol[1], $val);
+                    } elseif ($exConCol[1] == 'NOT') {
+                        $query->where("{$exConCol[0]} !=", $val);
+                    }
+                } elseif (count($exConCol) == 3) {
+                    if ($exConCol[2] == 'LIKE') {
+                        if ($exConCol[0] == 'OR') {
+                            $query->orLike($exConCol[1], $val);
+                        } else {
+                            $query->like($exConCol[1], $val);
+                        }
+                    } elseif ($exConCol[2] == 'ILIKE') {
+                        if ($exConCol[0] == 'OR') {
+                            $query->orLike(Builder::protect($exConCol[1]), $val, 'both', null, true);
+                        } else {
+                            $query->like(Builder::protect($exConCol[1]), $val, 'both', null, true);
+                        }
+                    }
+                }
+            }
+        }
+
+        return $query;
+    }
 }
