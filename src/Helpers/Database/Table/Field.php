@@ -111,6 +111,23 @@ class Field
         ];
     }
 
+    public static function masterID($name = 'master', $default = [
+        'type' => 'INT',
+        'unsigned' => true,
+        'null' => false,
+        'default' => 0,
+    ])
+    {
+        return [
+            $name . '_id' => [
+                'type' => $default['type'] ?? 'INT',
+                'unsigned' => $default['unsigned'] ?? true,
+                'null' => $default['null'] ?? false,
+                'default' => $default['default'] ?? 0,
+            ]
+        ];
+    }
+
     public static function integer($name = '', $default = [
         'type' => 'INT',
         'unsigned' => false,
